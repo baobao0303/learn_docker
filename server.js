@@ -1,9 +1,19 @@
 const express = require("express");
+const path = require("path");
 const app = express();
-const port = 3000;
 
+// cau hinh port - config port
+
+const port = process.env.PORT || 8080;
+
+// cau hinh view engine - config view engine
+app.set("views", path.join(__dirname, "src/views"));
+app.set("view engine", "ejs");
+
+//khai bao router - declare router
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  // res.send("Hello World!");
+  res.render("sample.ejs");
 });
 
 app.listen(port, () => {
